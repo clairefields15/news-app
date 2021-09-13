@@ -11,7 +11,7 @@ export const Articles = ({ articles }) => {
   return (
     <section className='articles-container'>
       <h2>Top Articles</h2>
-      {createCards(articles)}
+      <section className='articles'>{createCards(articles)}</section>
     </section>
   );
 };
