@@ -9,7 +9,9 @@ export const ErrorComponent = ({ message }) => {
       {message === "Sorry, that page doesn't exist" && (
         <>
           <p>Would you like to go home?</p>
-          <NavLink to='/'>Home</NavLink>
+          <NavLink to='/' className='error-home'>
+            Home
+          </NavLink>
         </>
       )}
     </>
