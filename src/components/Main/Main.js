@@ -1,29 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './Main.css';
 import { Sidebar } from '../Sidebar/Sidebar';
 import { Articles } from '../Articles/Articles';
-import { fetchTopStories } from '../../utils/apiCalls';
 import { ErrorComponent } from '../ErrorComponent/ErrorComponent';
 
-const section = 'home';
-
-export const Main = () => {
-  const [errorMessage, setErrorMessage] = useState('');
-  const [articles, setArticles] = useState([]);
-
-  useEffect(() => {
-    const fetchArticles = async section => {
-      try {
-        let data = await fetchTopStories(section);
-        setArticles(data);
-      } catch (error) {
-        setErrorMessage(error.message);
-      }
-    };
-
-    fetchArticles(section);
-  }, []);
-
+export const Main = ({ articles, errorMessage }) => {
   return (
     <main className='main-content-container'>
       {errorMessage && <ErrorComponent message={errorMessage} />}
