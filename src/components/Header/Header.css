@@ -10,3 +10,12 @@ header {
 h1 {
   margin-left: 0.5em;
 }
+
+header .navlink {
+  text-decoration: none;
+  color: white;
+}
+
+header .navlink:hover {
+  color: red;
+}
