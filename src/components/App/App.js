@@ -1,5 +1,12 @@
 import React from 'react';
+import { Route, Switch, NavLink, Link } from 'react-router-dom';
+
+import './App.css';
 
 export const App = () => {
-  return <h1>THE NEWS</h1>;
+  return (
+    <Switch>
+      <Route exact path='/' render={() => <Home />} />
+    </Switch>
+  );
 };
