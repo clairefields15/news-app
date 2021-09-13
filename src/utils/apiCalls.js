@@ -1,11 +1,10 @@
-export const fetchTopStories = async () => {
+export const fetchTopStories = async section => {
   let key = 'BD7xtP722e3bxfVAqWGLcA2acYJaEkHL';
   let response = await fetch(
-    `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${key}`
+    `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${key}`
   );
-  console.log(response);
-  let data = checkForErrors(response);
-  console.log('data res', data);
+  let data = await checkForErrors(response);
+  return await cleanData(data);
 };
 
 const checkForErrors = response => {
@@ -18,4 +17,18 @@ const checkForErrors = response => {
   } else {
     throw new Error('Something went wrong');
   }
+};
+
+const cleanData = data => {
+  return data.results.map(result => {
+    return {
+      abstract: result.abstract,
+      byline: result.byline,
+      publishedOn: result['published_date'],
+      images: result.multimedia,
+      section: result.section,
+      url: result.url,
+      title: result.title
+    };
+  });
 };

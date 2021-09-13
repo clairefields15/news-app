@@ -4,27 +4,29 @@ import { Sidebar } from '../Sidebar/Sidebar';
 import { Articles } from '../Articles/Articles';
 import { fetchTopStories } from '../../utils/apiCalls';
 
+const section = 'home';
+
 export const Main = () => {
   const [errorMessage, setErrorMessage] = useState('');
-  const [topStories, setTopStories] = useState([]);
+  const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    const fetchArticles = async () => {
+    const fetchArticles = async section => {
       try {
-        let data = await fetchTopStories();
-        console.log('dataaaaa', data);
+        let data = await fetchTopStories(section);
+        setArticles(data);
       } catch (error) {
         setErrorMessage(error.message);
       }
     };
 
-    fetchArticles();
+    fetchArticles(section);
   }, []);
 
   return (
     <main className='main-content-container'>
       <Sidebar />
-      <Articles />
+      <Articles articles={articles} />
     </main>
   );
 };
