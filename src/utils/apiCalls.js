@@ -21,14 +21,23 @@ const checkForErrors = response => {
 
 const cleanData = data => {
   return data.results.map(result => {
+    let path = result.url.split('/');
+    let index = result.url.split('/').length - 1;
+    let id = path[index].split('.html')[0];
+    let thumbnail = result.multimedia.find(
+      image => image.format === 'thumbLarge'
+    );
     return {
       abstract: result.abstract,
       byline: result.byline,
       publishedOn: result['published_date'],
       images: result.multimedia,
+      thumbnail: thumbnail.url,
+      alt: thumbnail.caption,
       section: result.section,
       url: result.url,
-      title: result.title
+      title: result.title,
+      id: id
     };
   });
 };
