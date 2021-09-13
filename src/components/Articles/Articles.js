@@ -1,24 +1,17 @@
 import React from 'react';
 import './Articles.css';
+import { Article } from '../Article/Article';
 
-export const Articles = () => {
-  const createCards = () => {
-    return (
-      <>
-        <p>Hi</p>
-        <p>Hi</p>
-        <p>Hi</p>
-        <p>Hi</p>
-        <p>Hi</p>
-        <p>Hi</p>
-        <p>Hi</p>
-      </>
-    );
+export const Articles = ({ articles }) => {
+  const createCards = articles => {
+    return articles.map(article => {
+      return <Article article={article} key={article.id} />;
+    });
   };
   return (
     <section className='articles-container'>
       <h2>Top Articles</h2>
-      {createCards()}
+      <section className='articles'>{createCards(articles)}</section>
     </section>
   );
 };
