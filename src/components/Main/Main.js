@@ -1,12 +1,13 @@
 import React from 'react';
 import './Main.css';
-import { Header } from '../Header/Header';
+import { Sidebar } from '../Sidebar/Sidebar';
+import { Articles } from '../Articles/Articles';
 
 export const Main = () => {
   return (
-    <main>
-      <Header />
-      <h2>Top Articles</h2>
+    <main className='main-content-container'>
+      <Sidebar />
+      <Articles />
     </main>
   );
 };
