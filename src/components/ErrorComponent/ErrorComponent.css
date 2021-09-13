@@ -1,0 +1,12 @@
+.error-home {
+  border: 1px solid grey;
+  text-decoration: none;
+  color: black;
+  background-color: lightgray;
+  padding: 0.5em;
+  border-radius: 2em;
+}
+
+.error-home:hover {
+  background-color: grey;
+}
