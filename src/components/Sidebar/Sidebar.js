@@ -1,21 +1,24 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './Sidebar.css';
 
-export const Sidebar = () => {
-  return (
-    <aside>
-      <h2>Sidebar</h2>
-      <ul>
-        <li>Hello</li>
-        <li>Hello</li>
-        <li>Hello</li>
-        <li>Hello</li>
-        <li>Hello</li>
-        <li>Hello</li>
-        <li>Hello</li>
-        <li>Hello</li>
-        <li>Hello</li>
-      </ul>
-    </aside>
-  );
+export const Sidebar = ({ sections, changeSection }) => {
+  const handleClick = e => {
+    changeSection(e.target.id);
+  };
+
+  const makeOptions = sections => {
+    return sections.map(section => (
+      <NavLink
+        to={`/${section}`}
+        key={section}
+        className='section-option'
+        onClick={e => handleClick(e)}
+        id={section}
+      >
+        {section}
+      </NavLink>
+    ));
+  };
+  return <nav>{makeOptions(sections)}</nav>;
 };

@@ -24,16 +24,12 @@ const cleanData = data => {
     let path = result.url.split('/');
     let index = result.url.split('/').length - 1;
     let id = path[index].split('.html')[0];
-    let thumbnail = result.multimedia.find(
-      image => image.format === 'thumbLarge'
-    );
+    console.log(result.multimedia);
     return {
       abstract: result.abstract,
       byline: result.byline,
       publishedOn: result['published_date'],
-      images: result.multimedia,
-      thumbnail: thumbnail.url,
-      alt: thumbnail.caption,
+      imageUrl: result.multimedia ? result.multimedia[0].url : null,
       section: result.section,
       url: result.url,
       title: result.title,
