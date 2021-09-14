@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useLocation } from 'react-router-dom';
 import { Main } from '../Main/Main';
 import { Header } from '../Header/Header';
 import { ErrorComponent } from '../ErrorComponent/ErrorComponent';
@@ -7,16 +7,48 @@ import { Details } from '../Details/Details';
 import { fetchTopStories } from '../../utils/apiCalls';
 import './App.css';
 
-const section = 'home';
+const sections = [
+  'arts',
+  'automobiles',
+  'books',
+  'business',
+  'fashion',
+  'food',
+  'health',
+  'home',
+  'insider',
+  'magazine',
+  'movies',
+  'obituaries',
+  'opinion',
+  'politics',
+  'science',
+  'sports',
+  'technology',
+  'theater',
+  'travel',
+  'upshot',
+  'us',
+  'world'
+];
 
 export const App = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [articles, setArticles] = useState([]);
+  const [section, setSection] = useState('home');
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    if (pathname === '/') {
+      setSection('home');
+    }
+  }, [pathname]);
 
   useEffect(() => {
     const fetchArticles = async section => {
       try {
         let data = await fetchTopStories(section);
+        console.log('data', data);
         setArticles(data);
       } catch (error) {
         setErrorMessage(error.message);
@@ -24,7 +56,12 @@ export const App = () => {
     };
 
     fetchArticles(section);
-  }, []);
+  }, [section]);
+
+  const changeSection = section => {
+    setSection(section);
+  };
+
   return (
     <>
       <Header />
@@ -33,11 +70,30 @@ export const App = () => {
           exact
           path='/'
           render={() => (
-            <Main articles={articles} errorMessage={errorMessage} />
+            <Main
+              articles={articles}
+              errorMessage={errorMessage}
+              sections={sections}
+              changeSection={changeSection}
+            />
           )}
         />
 
-        <Route exact path='/:section/' render={() => <Main />} />
+        <Route
+          exact
+          path='/:section/'
+          render={({ match }) => {
+            const { section } = match.params;
+            return (
+              <Main
+                articles={articles}
+                errorMessage={errorMessage}
+                sections={sections}
+                changeSection={changeSection}
+              />
+            );
+          }}
+        />
 
         <Route
           exact
