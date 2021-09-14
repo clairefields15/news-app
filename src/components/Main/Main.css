@@ -2,4 +2,5 @@
   display: grid;
   grid-template-columns: 1fr 9fr;
   grid-template-areas: 'sidebar main';
+  gap: 1em;
 }

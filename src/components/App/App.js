@@ -48,7 +48,6 @@ export const App = () => {
     const fetchArticles = async section => {
       try {
         let data = await fetchTopStories(section);
-        console.log('data', data);
         setArticles(data);
       } catch (error) {
         setErrorMessage(error.message);
@@ -82,8 +81,7 @@ export const App = () => {
         <Route
           exact
           path='/:section/'
-          render={({ match }) => {
-            const { section } = match.params;
+          render={() => {
             return (
               <Main
                 articles={articles}

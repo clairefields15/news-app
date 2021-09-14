@@ -1,7 +1,24 @@
-aside {
-  background-color: lightgreen;
+nav {
+  background-color: #2a2a2a;
   width: 100%;
   min-height: 100vh;
   grid-area: sidebar;
   padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-option {
+  border: 1px solid white;
+  text-decoration: none;
+  padding: 0.25em;
+  margin: 0.25em 0em;
+  color: white;
+  background-color: #2a2a2a;
+}
+
+.section-option:hover {
+  color: #2a2a2a;
+  background-color: white;
+  border: 1px solid #2a2a2a;
 }
