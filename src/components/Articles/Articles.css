@@ -9,3 +9,15 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(400px, 100%), 1fr));
 }
+
+.img-container {
+  height: 20em;
+  width: 100%;
+}
+
+.thumbnail {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
