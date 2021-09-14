@@ -6,7 +6,7 @@ export const Details = ({ article }) => {
     <>
       <h2>{article.title}</h2>
       <p>{article.byline}</p>
-      <img src={article.imageUrl} />
+      <img src={article.imageUrl} alt={article.title} />
       <p>{article.abstract}</p>
     </>
   );
