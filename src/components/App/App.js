@@ -74,6 +74,7 @@ export const App = () => {
               errorMessage={errorMessage}
               sections={sections}
               changeSection={changeSection}
+              section={section}
             />
           )}
         />
@@ -88,6 +89,7 @@ export const App = () => {
                 errorMessage={errorMessage}
                 sections={sections}
                 changeSection={changeSection}
+                section={section}
               />
             );
           }}
