@@ -2,7 +2,7 @@ import React from 'react';
 import './Articles.css';
 import { Article } from '../Article/Article';
 
-export const Articles = ({ articles }) => {
+export const Articles = ({ articles, section }) => {
   const createCards = articles => {
     return articles.map(article => {
       return <Article article={article} key={article.id} />;
@@ -10,7 +10,11 @@ export const Articles = ({ articles }) => {
   };
   return (
     <section className='articles-container'>
-      <h2>Top Articles</h2>
+      {section === 'home' ? (
+        <h2>Top Articles</h2>
+      ) : (
+        <h2>{section.charAt(0).toUpperCase() + section.slice(1)}</h2>
+      )}
       <section className='articles'>{createCards(articles)}</section>
     </section>
   );

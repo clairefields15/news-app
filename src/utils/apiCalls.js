@@ -24,7 +24,6 @@ const cleanData = data => {
     let path = result.url.split('/');
     let index = result.url.split('/').length - 1;
     let id = path[index].split('.html')[0];
-    console.log(result.multimedia);
     return {
       abstract: result.abstract,
       byline: result.byline,
