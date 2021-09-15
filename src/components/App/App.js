@@ -6,6 +6,7 @@ import { ErrorComponent } from '../ErrorComponent/ErrorComponent';
 import { Details } from '../Details/Details';
 import { fetchTopStories } from '../../utils/apiCalls';
 import './App.css';
+import { Sidebar } from '../Sidebar/Sidebar';
 
 const sections = [
   'arts',
@@ -101,7 +102,12 @@ export const App = () => {
           render={({ match }) => {
             const { id } = match.params;
             let article = articles.find(article => article.id === id);
-            return <Details article={article} />;
+            return (
+              <main className='main-content-container'>
+                <Sidebar sections={sections} changeSection={changeSection} />
+                <Details article={article} />
+              </main>
+            );
           }}
         />
 

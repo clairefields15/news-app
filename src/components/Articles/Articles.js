@@ -3,7 +3,6 @@ import './Articles.css';
 import { Article } from '../Article/Article';
 
 export const Articles = ({ articles, section }) => {
-  console.log(section);
   const createCards = articles => {
     return articles.map(article => {
       return <Article article={article} key={article.id} />;
