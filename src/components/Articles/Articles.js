@@ -5,8 +5,8 @@ import { Article } from '../Article/Article';
 
 export const Articles = ({ articles, section, errorMessage }) => {
   const createCards = articles => {
-    return articles.map(article => {
-      return <Article article={article} key={article.id} />;
+    return articles.map((article, index) => {
+      return <Article article={article} key={article.id + index} />;
     });
   };
   return (
