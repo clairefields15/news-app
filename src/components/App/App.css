@@ -17,3 +17,13 @@ h1 {
   grid-template-areas: 'header header' 'sidebar main';
   column-gap: 1em;
 }
+
+@media screen and (max-width: 480px) {
+  .main-content-container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'header header' 'main main';
+    gap: 0em;
+  }
+}

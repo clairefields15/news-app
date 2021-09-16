@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
-// import { Main } from '../Main/Main';
 import { Articles } from '../Articles/Articles';
 import { Header } from '../Header/Header';
 import { ErrorComponent } from '../ErrorComponent/ErrorComponent';
@@ -17,7 +16,6 @@ const sections = [
   'fashion',
   'food',
   'health',
-  'home',
   'insider',
   'magazine',
   'movies',
@@ -100,11 +98,19 @@ export const App = () => {
           render={({ match }) => {
             const { id } = match.params;
             let article = articles.find(article => article.id === id);
-            return <Details article={article} />;
+            return (
+              <>
+                {!article && (
+                  <ErrorComponent message={"Sorry, that page doesn't exist"} />
+                )}
+                {article && <Details article={article} />}
+              </>
+            );
           }}
         />
 
         <Route
+          path='*'
           render={() => (
             <ErrorComponent message={"Sorry, that page doesn't exist"} />
           )}
