@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import './Header.css';
 
 export const Header = ({ hamburgerClick }) => {
+  const [isClosed, setClosed] = useState(true);
   const { pathname } = useLocation();
 
   const handleClick = e => {
     e.preventDefault();
+    setClosed(!isClosed);
     hamburgerClick();
   };
   return (
@@ -18,7 +20,10 @@ export const Header = ({ hamburgerClick }) => {
           <h1>THE NEWS</h1>
         </NavLink>
       )}
-      <button className='hamburger' onClick={e => handleClick(e)}>
+      <button
+        className={isClosed ? 'hamburger' : 'hamburger open'}
+        onClick={e => handleClick(e)}
+      >
         <span></span>
         <span></span>
         <span></span>

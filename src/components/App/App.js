@@ -60,6 +60,7 @@ export const App = () => {
 
   const changeSection = section => {
     setSection(section);
+    toggleNavOpen(false);
   };
 
   const hamburgerClick = e => {
