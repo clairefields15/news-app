@@ -1,8 +1,9 @@
 import React from 'react';
 import './Articles.css';
+import { ErrorComponent } from '../ErrorComponent/ErrorComponent';
 import { Article } from '../Article/Article';
 
-export const Articles = ({ articles, section }) => {
+export const Articles = ({ articles, section, errorMessage }) => {
   const createCards = articles => {
     return articles.map(article => {
       return <Article article={article} key={article.id} />;
@@ -15,7 +16,11 @@ export const Articles = ({ articles, section }) => {
       ) : (
         <h2>{section.charAt(0).toUpperCase() + section.slice(1)}</h2>
       )}
-      <section className='articles'>{createCards(articles)}</section>
+      {errorMessage && <ErrorComponent message={errorMessage} />}
+      {!errorMessage && !articles.length && <p>Loading articles...</p>}
+      {!errorMessage && !!articles.length && (
+        <section className='articles'>{createCards(articles)}</section>
+      )}
     </section>
   );
 };

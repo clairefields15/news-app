@@ -1,31 +1,14 @@
-import React from 'react';
-import './Main.css';
-import { Sidebar } from '../Sidebar/Sidebar';
-import { Articles } from '../Articles/Articles';
-import { ErrorComponent } from '../ErrorComponent/ErrorComponent';
+// import React from 'react';
+// import './Main.css';
+// import { Articles } from '../Articles/Articles';
+// import { ErrorComponent } from '../ErrorComponent/ErrorComponent';
 
-export const Main = ({
-  articles,
-  errorMessage,
-  sections,
-  changeSection,
-  section
-}) => {
-  return (
-    <main className='main-content-container'>
-      {errorMessage && <ErrorComponent message={errorMessage} />}
-      {!errorMessage && !articles.length && (
-        <>
-          <Sidebar sections={sections} changeSection={changeSection} />
-          <p>Loading articles...</p>
-        </>
-      )}
-      {!errorMessage && !!articles.length && (
-        <>
-          <Sidebar sections={sections} changeSection={changeSection} />
-          <Articles section={section} articles={articles} />
-        </>
-      )}
-    </main>
-  );
-};
+// export const Main = ({
+//   articles,
+//   errorMessage,
+//   sections,
+//   changeSection,
+//   section
+// }) => {
+//   return <main className='main-content-container'></main>;
+// };

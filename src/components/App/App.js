@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
-import { Main } from '../Main/Main';
+// import { Main } from '../Main/Main';
+import { Articles } from '../Articles/Articles';
 import { Header } from '../Header/Header';
 import { ErrorComponent } from '../ErrorComponent/ErrorComponent';
 import { Details } from '../Details/Details';
@@ -65,17 +66,16 @@ export const App = () => {
   return (
     <>
       <Header />
+      <Sidebar sections={sections} changeSection={changeSection} />
       <Switch>
         <Route
           exact
           path='/'
           render={() => (
-            <Main
+            <Articles
+              section={section}
               articles={articles}
               errorMessage={errorMessage}
-              sections={sections}
-              changeSection={changeSection}
-              section={section}
             />
           )}
         />
@@ -85,12 +85,10 @@ export const App = () => {
           path='/:section/'
           render={() => {
             return (
-              <Main
+              <Articles
+                section={section}
                 articles={articles}
                 errorMessage={errorMessage}
-                sections={sections}
-                changeSection={changeSection}
-                section={section}
               />
             );
           }}
@@ -102,12 +100,7 @@ export const App = () => {
           render={({ match }) => {
             const { id } = match.params;
             let article = articles.find(article => article.id === id);
-            return (
-              <main className='main-content-container'>
-                <Sidebar sections={sections} changeSection={changeSection} />
-                <Details article={article} />
-              </main>
-            );
+            return <Details article={article} />;
           }}
         />
 
