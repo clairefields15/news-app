@@ -22,56 +22,63 @@ header .navlink:hover {
 }
 
 .hamburger {
-  width: 45px;
-  height: 45px;
-  position: relative;
-  margin: 50px auto;
-  margin: 0;
-  padding: 0;
-  border: none;
-  background-color: inherit;
+  display: none;
 }
 
-.hamburger span {
-  display: block;
-  position: absolute;
-  height: 5px;
-  width: 100%;
-  background: white;
-  border-radius: 9px;
-  opacity: 1;
-  left: 0;
-}
+@media screen and (max-width: 480px) {
+  .hamburger {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    position: relative;
+    margin: 50px auto;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: inherit;
+  }
 
-.hamburger span:nth-child(1) {
-  top: 0px;
-}
+  .hamburger span {
+    display: block;
+    position: absolute;
+    height: 5px;
+    width: 100%;
+    background: white;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+  }
 
-.hamburger span:nth-child(2) {
-  top: 18px;
-}
+  .hamburger span:nth-child(1) {
+    top: 0px;
+  }
 
-.hamburger span:nth-child(3) {
-  top: 36px;
-}
+  .hamburger span:nth-child(2) {
+    top: 18px;
+  }
 
-.hamburger-open span:nth-child(1) {
-  top: 18px;
-  -webkit-transform: rotate(135deg);
-  -moz-transform: rotate(135deg);
-  -o-transform: rotate(135deg);
-  transform: rotate(135deg);
-}
+  .hamburger span:nth-child(3) {
+    top: 36px;
+  }
 
-.hamburger-open span:nth-child(2) {
-  opacity: 0;
-  left: -60px;
-}
+  .hamburger-open span:nth-child(1) {
+    top: 18px;
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
 
-.hamburger-open span:nth-child(3) {
-  top: 18px;
-  -webkit-transform: rotate(-135deg);
-  -moz-transform: rotate(-135deg);
-  -o-transform: rotate(-135deg);
-  transform: rotate(-135deg);
+  .hamburger-open span:nth-child(2) {
+    opacity: 0;
+    left: -60px;
+  }
+
+  .hamburger-open span:nth-child(3) {
+    top: 18px;
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+  }
 }

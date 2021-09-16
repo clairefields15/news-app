@@ -21,6 +21,9 @@ export const Sidebar = ({ sections, changeSection, navOpen }) => {
     ));
   };
   return (
-    <>{navOpen && <nav className='open-nav'>{makeOptions(sections)}</nav>}</>
+    <>
+      {navOpen && <nav className='open-nav'>{makeOptions(sections)}</nav>}
+      <nav>{makeOptions(sections)}</nav>
+    </>
   );
 };
