@@ -4,7 +4,6 @@
   box-sizing: border-box;
   padding: 1em;
   align-items: center;
-  width: 100vw;
 }
 .details-wrapper img {
   width: 40em;
