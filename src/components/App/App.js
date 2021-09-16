@@ -64,7 +64,7 @@ export const App = () => {
   };
 
   return (
-    <>
+    <main className='main-content-container'>
       <Header />
       <Sidebar sections={sections} changeSection={changeSection} />
       <Switch>
@@ -110,6 +110,6 @@ export const App = () => {
           )}
         />
       </Switch>
-    </>
+    </main>
   );
 };

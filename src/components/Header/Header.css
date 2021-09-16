@@ -5,6 +5,7 @@ header {
   align-items: center;
   width: 100%;
   height: 4em;
+  grid-area: header;
 }
 
 h1 {
