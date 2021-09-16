@@ -1,7 +1,5 @@
 export const fetchTopStories = async section => {
-  // let key = process.env.REACT_APP_API_KEY;
-  let key = 'BD7xtP722e3bxfVAqWGLcA2acYJaEkHL';
-
+  let key = process.env.REACT_APP_API_KEY;
 
   let response = await fetch(
     `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${key}`
