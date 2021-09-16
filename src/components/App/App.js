@@ -36,6 +36,7 @@ export const App = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [articles, setArticles] = useState([]);
   const [section, setSection] = useState('home');
+  const [navOpen, toggleNavOpen] = useState(false);
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -61,10 +62,18 @@ export const App = () => {
     setSection(section);
   };
 
+  const hamburgerClick = e => {
+    toggleNavOpen(!navOpen);
+  };
+
   return (
     <main className='main-content-container'>
-      <Header />
-      <Sidebar sections={sections} changeSection={changeSection} />
+      <Header hamburgerClick={hamburgerClick} />
+      <Sidebar
+        sections={sections}
+        changeSection={changeSection}
+        navOpen={navOpen}
+      />
       <Switch>
         <Route
           exact

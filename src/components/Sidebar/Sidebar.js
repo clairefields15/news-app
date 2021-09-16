@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './Sidebar.css';
 
-export const Sidebar = ({ sections, changeSection }) => {
+export const Sidebar = ({ sections, changeSection, navOpen }) => {
   const handleClick = e => {
     changeSection(e.target.id);
   };
@@ -20,5 +20,7 @@ export const Sidebar = ({ sections, changeSection }) => {
       </NavLink>
     ));
   };
-  return <nav>{makeOptions(sections)}</nav>;
+  return (
+    <>{navOpen && <nav className='open-nav'>{makeOptions(sections)}</nav>}</>
+  );
 };
