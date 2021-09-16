@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
-import { Main } from '../Main/Main';
+import { Articles } from '../Articles/Articles';
 import { Header } from '../Header/Header';
 import { ErrorComponent } from '../ErrorComponent/ErrorComponent';
 import { Details } from '../Details/Details';
@@ -16,7 +16,6 @@ const sections = [
   'fashion',
   'food',
   'health',
-  'home',
   'insider',
   'magazine',
   'movies',
@@ -37,6 +36,7 @@ export const App = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [articles, setArticles] = useState([]);
   const [section, setSection] = useState('home');
+  const [navOpen, toggleNavOpen] = useState(false);
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -60,22 +60,30 @@ export const App = () => {
 
   const changeSection = section => {
     setSection(section);
+    toggleNavOpen(false);
+  };
+
+  const hamburgerClick = e => {
+    toggleNavOpen(!navOpen);
   };
 
   return (
-    <>
-      <Header />
+    <main className='main-content-container'>
+      <Header hamburgerClick={hamburgerClick} navOpen={navOpen} />
+      <Sidebar
+        sections={sections}
+        changeSection={changeSection}
+        navOpen={navOpen}
+      />
       <Switch>
         <Route
           exact
           path='/'
           render={() => (
-            <Main
+            <Articles
+              section={section}
               articles={articles}
               errorMessage={errorMessage}
-              sections={sections}
-              changeSection={changeSection}
-              section={section}
             />
           )}
         />
@@ -85,12 +93,10 @@ export const App = () => {
           path='/:section/'
           render={() => {
             return (
-              <Main
+              <Articles
+                section={section}
                 articles={articles}
                 errorMessage={errorMessage}
-                sections={sections}
-                changeSection={changeSection}
-                section={section}
               />
             );
           }}
@@ -103,20 +109,23 @@ export const App = () => {
             const { id } = match.params;
             let article = articles.find(article => article.id === id);
             return (
-              <main className='main-content-container'>
-                <Sidebar sections={sections} changeSection={changeSection} />
-                <Details article={article} />
-              </main>
+              <>
+                {!article && (
+                  <ErrorComponent message={"Sorry, that page doesn't exist"} />
+                )}
+                {article && <Details article={article} />}
+              </>
             );
           }}
         />
 
         <Route
+          path='*'
           render={() => (
             <ErrorComponent message={"Sorry, that page doesn't exist"} />
           )}
         />
       </Switch>
-    </>
+    </main>
   );
 };

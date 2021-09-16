@@ -2,8 +2,14 @@ import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import './Header.css';
 
-export const Header = () => {
+export const Header = ({ hamburgerClick, navOpen }) => {
   const { pathname } = useLocation();
+
+  const handleClick = e => {
+    e.preventDefault();
+    hamburgerClick();
+  };
+
   return (
     <header>
       {pathname === '/' ? (
@@ -13,6 +19,14 @@ export const Header = () => {
           <h1>THE NEWS</h1>
         </NavLink>
       )}
+      <button
+        className={navOpen ? 'hamburger open' : 'hamburger'}
+        onClick={e => handleClick(e)}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </header>
   );
 };

@@ -1,8 +1,10 @@
 .details-wrapper {
   display: flex;
   flex-direction: column;
-  margin: 1em;
+  box-sizing: border-box;
+  padding: 1em;
   align-items: center;
+  width: 100vw;
 }
 .details-wrapper img {
   width: 40em;
@@ -21,4 +23,10 @@
 
 .details-wrapper a:hover {
   background-color: rgb(192, 192, 192);
+}
+
+@media screen and (max-width: 480px) {
+  .details-wrapper img {
+    width: 90vw;
+  }
 }
