@@ -69,7 +69,7 @@ export const App = () => {
 
   return (
     <main className='main-content-container'>
-      <Header hamburgerClick={hamburgerClick} />
+      <Header hamburgerClick={hamburgerClick} navOpen={navOpen} />
       <Sidebar
         sections={sections}
         changeSection={changeSection}
